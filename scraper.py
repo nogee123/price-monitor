@@ -56,7 +56,7 @@ def fetch(url: str, session: requests.Session, retries: int = RETRIES) -> bytes:
         except requests.RequestException as exc:
             last = exc
             if attempt < retries - 1:
-                time.sleep(2 ** attempt)      # 1s, 2s, 4s
+                time.sleep(2 ** attempt)      # 1s, 2s — doubles per retry; skipped after the last
     raise RuntimeError(f"failed to fetch {url}: {last}")
 
 

@@ -68,7 +68,7 @@ most expensive     : The Perfect Play (Play by Play #1) (£59.99)
 
 ## How it works
 
-1. **`fetch()`** — GET with configurable retries and exponential backoff (1s → 2s → 4s), so a single timeout doesn't kill a 50-page crawl.
+1. **`fetch()`** — GET with configurable retries and exponential backoff (1s, then 2s — doubling between attempts), so a single timeout doesn't kill a 50-page crawl.
 2. **`parse_products()`** — extracts title, price, star rating, stock status and absolute URL from each listing; finds the "next page" link.
 3. **`scrape()`** — follows pagination until exhausted or `--max-pages` is hit, with a politeness delay between requests.
 4. **`write_csv()` / `summarize()`** — writes a clean CSV and prints a price summary.
