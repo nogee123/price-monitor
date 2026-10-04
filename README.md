@@ -15,12 +15,32 @@ competitor's catalogue, run it on a schedule, and see exactly what moved.
 
 ## Quick start
 
+Set up an isolated environment first — this keeps the project's libraries out of
+your global Python instead of polluting it:
+
 ```bash
+uv venv                             # creates a project-local .venv folder
+uv pip install -r requirements.txt  # installs requests, BeautifulSoup4, pytest
+```
+
+No `uv`? Plain Python works too:
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate              # Windows
+# source .venv/bin/activate         # macOS / Linux
 pip install -r requirements.txt
+```
+
+Then run it:
+
+```bash
 python scraper.py                      # whole catalogue (~45s)
 python scraper.py --max-pages 5        # first 5 pages
 python scraper.py --out data/books.csv
 ```
+
+Run the tests with `pytest test_scraper.py` (they're offline — no network needed).
 
 ## Sample output
 
